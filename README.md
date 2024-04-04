@@ -23,12 +23,11 @@ To get started with using the algorithms in this repository, follow these steps:
    ```bash
    git clone https://github.com/CasuallyPassingBy/NumAlgoJulia.git
    ```
-2. Navigate to the repository directory:
-
-```bash
-   cd NumAlgoJulia
-   ```
-3. Explore the src directory to find the implementations of the numerical analysis algorithms.
+1. Navigate to the repository directory:
+    ```bash
+     cd NumAlgoJulia
+     ```
+1. Explore the src directory to find the implementations of the numerical analysis algorithms.
 
 
 
