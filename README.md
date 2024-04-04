@@ -58,5 +58,5 @@ Contributions to this repository are welcome! If you have implemented additional
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/CasuallyPassingBy/NumAlgoJulia/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
