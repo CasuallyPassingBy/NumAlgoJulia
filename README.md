@@ -36,11 +36,11 @@ Use the algorithms in your Julia projects by importing the necessary modules.
 Here's a basic example demonstrating how to use the zero finding algorithms:
 ```julia
 include("FindingZeros.jl")
-import .FindingZeros
+import .Finding_Zeros
 # Function you want to find the zero of
 f(x) = x^2 - 2
 #Find the approximate zero between 1 and 2 using the Bisection method
-approx_zero = bisection(f, 1, 2)
+approx_zero = Finding_Zeros.bisection(f, 1, 2)
 ```
 And here's how to perform linear interpolation on a dataset:
 ```julia
@@ -51,7 +51,7 @@ x_values = [0, 1, 2, 3, 4]
 y_values = [0, 1, 4, 9, 16]
 
 # Interpolate at x = 2.5 using Neville's method
-interp_value_neville = nevilles_method(x_values, y_values, 2.5)
+interp_value_neville = Interpolating.nevilles_method(x_values, y_values, 2.5)
 ```
 ## Contributing
 
