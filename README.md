@@ -12,7 +12,6 @@ Welcome to the Numerical Analysis Algorithms repository in Julia! This repositor
 - **Interpolation Techniques**: Tools for interpolating data using methods such as:
   - Linear interpolation
   - Polynomial interpolation (Lagrange, Newton)
-  - Cubic spline interpolation
 
 ## Getting Started
 
