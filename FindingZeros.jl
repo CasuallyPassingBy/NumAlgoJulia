@@ -24,7 +24,7 @@ module Finding_Zeros
     bisection(f, 1, 2, bracketing=true)  # Output: [1.4142131805419922, 1.4142141342163086]
     ```
     """
-    function bisection(f, a, b; tol=1e-6, max_iter=1000, bracketing = false)
+    function bisection(f::Function, a::Float64, b::Float64; tol=1e-6::, max_iter=1000, bracketing = false)::Union{Float64, Vector{Float64}}
         # Check if f(a) and f(b) have opposite signs
         if sign(f(a)) * sign(f(b)) > 0
             error()
@@ -81,10 +81,10 @@ module Finding_Zeros
     ```julia
     f(x) = x^2 - 2
     f_prime(x) = 2x
-    newton_method(f, f_prime, 1.5) # Output 1.4142135623730951
+    newton_method(f, f_prime, 1.5) # Output 1.4142135623730951s
     ```
     """
-    function newton_method(f, f_prime, x0; tol=1e-6, max_iter=1000)
+    function newton_method(f::Function, f_prime::Function, x0::Number; tol=1e-6::Real, max_iter=1000::Integer)::Number
         # Initialize the iteration counter and the initial approximation
         x_current = x0
         
@@ -135,7 +135,7 @@ module Finding_Zeros
     secant_method(f, 1, 2) # Output 1.4142135623730954
     ```
     """
-    function secant_method(f, x0, x1; tol = 1e-6, max_iter = 1000)
+    function secant_method(f::Function, x0::Number, x1::Number; tol = 1e-6::Real, max_iter = 1000::Initeger)::Number
         # Initialize the iteration counter and the initial approximations
         x_prev = x0
         x_current = x1
@@ -189,7 +189,7 @@ module Finding_Zeros
     false_position(f, 1.0, 2.0; bracketing=true)  # Output: [1.41421143847487, 1.4142135620573204]
     ```
     """
-    function false_position(f, a, b; tol=1e-6, max_iter=1000, bracketing = false)
+    function false_position(f::Function, a::Number, b::Number; tol=1e-6::Real, max_iter=1000::Initeger, bracketing = false::Bool)::Union{Number, Vector{Number}}
         # Check if f(a) and f(b) have opposite signs
         if f(a) * f(b) > 0
             error("Function has the same sign at both endpoints. False position method cannot proceed.")
@@ -267,7 +267,7 @@ module Finding_Zeros
     modified_newton(f, f_prime, f_double_prime, 1.5)  # Output: 1.4142135623746899
     ```
     """
-    function modified_newton(f, f_prime, f_double_prime, x0, tol=1e-6, max_iter=1000)
+    function modified_newton(f::Function, f_prime::Function, f_double_prime::Function, x0::Number; tol=1e-6::Real, max_iter=1000::Integer)::Number
         # Initialize the iteration counter and the initial approximation
         iter = 0
         x_current = x0
@@ -319,7 +319,7 @@ module Finding_Zeros
     steffensen_acceleration(f, 1)  # Output: -1
     ```
     """
-    function steffensen_acceleration(f, x0; tol=1e-6, max_iter=1000)
+    function steffensen_acceleration(f::Function, x0::Number; tol=1e-6::Real, max_iter=1000::Integer)::Number
         x_current = x0
         
         for iter in 1:max_iter
@@ -369,7 +369,7 @@ module Finding_Zeros
     accelerated_newton(f, f_prime, 1.5)  # Output: 1.4142135623746899
     ```
     """
-    function accelerated_newton(f, f_prime, x0, tol=1e-6, max_iter=1000)
+    function accelerated_newton(f::Function, f_prime::Function, x0::Number; tol=1e-6::Real, max_iter=1000::Integer)::Number
         # Initialize the current approximation
         x_current = x0
         
@@ -444,7 +444,7 @@ module Finding_Zeros
     fixed_point_iteration(f, 1.5; max_iter = 10000)  # Output: 1.9999992794691956
     ```
     """
-    function fixed_point_iteration(f, x0; tol=1e-6, max_iter=1000)
+    function fixed_point_iteration(f::Function, x0::Number; tol=1e-6::Real, max_iter=1000::Integer)::Number
         # Initialize the current approximation
         x_current = x0
         # Iterate until convergence or reaching the maximum number of iterations

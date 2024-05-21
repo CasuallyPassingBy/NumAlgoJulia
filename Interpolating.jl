@@ -1,6 +1,6 @@
 module Interpolating
     """
-        lagrange_polynomial(x_values, y_values)
+        lagrange_polynomial(x_values::Vector{Float64}, y_values::Vector{Float64})::Function
 
     Compute the Lagrange interpolation polynomial based on the provided data points.
 
@@ -19,7 +19,7 @@ module Interpolating
     lagrange_polynomial(2.5) # Output: 6.25
     ```
     """
-    function lagrange_polynomial(x_values, y_values)
+    function lagrange_polynomial(x_values::Vector{Float64}, y_values::Vector{Float64})::Function
         n = length(x_values)
         if n != length(y_values)
             error("The input data x_values and y_values have different lengths")
@@ -47,7 +47,7 @@ module Interpolating
     end
 
     """
-        nevilles_method(x_values, y_values, x)
+        nevilles_method(x_values::Vector{Float64}, y_values::Vector{Float64}, x::Float64)
 
     Compute the interpolated y value corresponding to a given x value using Neville's method.
 
@@ -70,7 +70,7 @@ module Interpolating
     nevilles_method(x_values, y_values, x) # Output: 6.25
     ```
     """
-    function nevilles_method(x_values, y_values, x)
+    function nevilles_method(x_values::Vector{Float64}, y_values::Vector{Float64}, x::Float64)::Float64
         n = length(x_values)
         if n != length(y_values)
             error("the input data x_values and y_values have different legnths")
@@ -86,7 +86,7 @@ module Interpolating
     end
 
     """
-        calculate_divided_differences(x, y)
+        calculate_divided_differences(x::Vector{Float64}, y::Vector{Float64})
 
     Calculate the difference table using Newton's divided differences method.
 
@@ -109,7 +109,7 @@ module Interpolating
     # 16.0  0.0  0.0  0.0  0.0
     ```
     """
-    function calculate_divided_differences(x, y)
+    function calculate_divided_differences(x::Vector{Float64}, y::Vector{Float64})::Matrix{Float64}
         n = length(x)
         F = zeros(n, n)
         if length(y) != n
@@ -128,7 +128,7 @@ module Interpolating
     end
 
     """
-        update_divided_differences(F, x, y)
+        update_divided_differences(F::Matrix{Float64}, x::Vector{Float64}, y::Vector{Float64})
 
     Update the difference table `F` with new data points `x` and `y`.
 
@@ -155,7 +155,7 @@ module Interpolating
     # 16.0  0.0  0.0  0.0  0.0
     ```
     """
-    function update_divided_differences(F, x, y)
+    function update_divided_differences(F::Matrix{Float64}, x::Vector{Float64}, y::Vector{Float64})::Matrix{Float64}
         n = size(F)[1]
 
         # Determine the number of new data points
@@ -187,7 +187,7 @@ module Interpolating
     end
 
     """
-        newton_interpolation_from_table(F, x_values, x)
+        newton_interpolation_from_table(F::Matrix{Float64}, x_values::Vector{Float64}, x::Float64)
 
     Calculate the interpolation given by the difference table of Newton's divided differences.
 
@@ -207,7 +207,7 @@ module Interpolating
     newton_interpolation_from_table(F, x_values, 2.5) # Output 6.25
     ```
     """
-    function newton_interpolation_from_table(F, x_values, x)
+    function newton_interpolation_from_table(F::Matrix{Float64}, x_values::Vector{Float64}, x::Float64)::Number
         # Extract the first row of the difference table
         coefficients = F[1, :]
         
@@ -229,7 +229,7 @@ module Interpolating
     end
 
     """
-        linear_interpolation(x_values, y_values, x; sorted=true)
+        linear_interpolation(x_values::Vector{Float64}, y_values::Vector{Float64}, x::Float64; sorted=true::Bool)
 
     Compute linear interpolation of `y` for a given `x` value using the provided data points.
 
@@ -257,7 +257,7 @@ module Interpolating
     the y value corresponding to the given x value. If x is outside the range of x_values, 
     the function extrapolates using the nearest data points.
     """
-    function linear_interpolation(x_values, y_values, x; sorted=false)
+    function linear_interpolation(x_values::Vector{Float64}, y_values::Vector{Float64}, x::Float64; sorted=false::Bool)::Number
         n = length(x_values)
         if n != length(y_values)
             error("The input data x_values and y_values have different lengths")
